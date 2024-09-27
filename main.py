@@ -34,6 +34,11 @@ def main():
         for member in drawable:
             member.draw(screen)
         for member in asteroids:
+            for shot in shots:
+                destroy = member.check_collision(shot)
+                if destroy:
+                    member.kill()
+                    shot.kill()
             collision = member.check_collision(player)
             if collision:
                 print("Game over!")
